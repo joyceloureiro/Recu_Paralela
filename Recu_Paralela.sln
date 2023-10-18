@@ -5,6 +5,12 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recu_Paralela", "Recu_Paralela\Recu_Paralela.csproj", "{4C4C8BE8-085E-4B24-AB88-5B52C3C52DE4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apresentaçao", "Apresentaçao", "{E266C95D-E498-4C4F-9B83-A894D420EF09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicação_Negocio", "Aplicação_Negocio", "{5D673CCE-737E-4DA0-9D6D-A68C0EC6A732}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{7A866762-7B00-496E-AB6C-727ECF26B640}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +24,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4C4C8BE8-085E-4B24-AB88-5B52C3C52DE4} = {E266C95D-E498-4C4F-9B83-A894D420EF09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8300FC85-1CC3-487E-81DF-4AC7AA40259A}
