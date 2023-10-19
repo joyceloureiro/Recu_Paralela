@@ -16,5 +16,20 @@ namespace Recu_Paralela
         {
             InitializeComponent();
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void FormAdvocacia_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
