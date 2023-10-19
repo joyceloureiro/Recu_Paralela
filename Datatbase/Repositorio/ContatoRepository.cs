@@ -113,15 +113,7 @@ namespace Datatbase.Repositorio
 
         }
 
-        public Produto ObterCargo(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public List<Produto> ObterTodosPorStatus(int Status)
-        {
-            throw new NotImplementedException();
-        }
-
+      
 
         public List<Contato> ObterTodos()
         {
@@ -143,7 +135,7 @@ namespace Datatbase.Repositorio
                 throw new Exception("Erro ao obter clientes.", ex);
             }
         }
-        public Produto ObterPorId(int id)
+        public Contato ObterPorId(int id)
         {
             try
             {
@@ -160,7 +152,7 @@ namespace Datatbase.Repositorio
 
                     //Executa o comando no banco e substitui o @id pelo int id do parametro do Metodo
                     //E retorna uma única linha do banco QuerySingleOrDefault.
-                    var cargos = connection.QuerySingleOrDefault<Produto>(sql, parametros);
+                    var cargos = connection.QuerySingleOrDefault<Contato>(sql, parametros);
 
                     return cargos;
                 }

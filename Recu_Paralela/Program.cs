@@ -16,7 +16,7 @@ namespace Recu_Paralela
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAdvocacia());
+            Application.Run(new Form2());
         }
     }
 }
