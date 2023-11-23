@@ -1,4 +1,4 @@
-﻿using Aplicacao.Entidades.Comum;
+﻿using Aplicacao.Repository.Entidades.Comum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace Aplicacao.Repository
         List<Contato> ObterTodosPorNome(int Nome);
         List<Contato> ObterTodosPorEmail(int Email);
         List<Contato> ObterTodosPorTelefone(int Telefone);
-        Contato ObterCargo(int id);
+       
 
     }
 }

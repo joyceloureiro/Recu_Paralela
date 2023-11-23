@@ -30,12 +30,22 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnRegarregar = new System.Windows.Forms.Button();
+            this.btnCarregar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnEditarr = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.dtgContatos = new System.Windows.Forms.DataGridView();
+            this.gvContatos = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtbairro = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtUf = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.mtbDataContato = new System.Windows.Forms.MaskedTextBox();
@@ -48,17 +58,15 @@
             this.mkbTelefone = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.TxtEndereco = new System.Windows.Forms.TextBox();
+            this.TxtRua = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCarregar = new System.Windows.Forms.Button();
-            this.btnRegarregar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgContatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContatos)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,13 +88,32 @@
             this.tabPage1.Controls.Add(this.btnNovo);
             this.tabPage1.Controls.Add(this.btnEditarr);
             this.tabPage1.Controls.Add(this.btnEditar);
-            this.tabPage1.Controls.Add(this.dtgContatos);
+            this.tabPage1.Controls.Add(this.gvContatos);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(768, 380);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnRegarregar
+            // 
+            this.btnRegarregar.Location = new System.Drawing.Point(665, 158);
+            this.btnRegarregar.Name = "btnRegarregar";
+            this.btnRegarregar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegarregar.TabIndex = 6;
+            this.btnRegarregar.Text = "Regarregar";
+            this.btnRegarregar.UseVisualStyleBackColor = true;
+            this.btnRegarregar.Click += new System.EventHandler(this.btnRegarregar_Click);
+            // 
+            // btnCarregar
+            // 
+            this.btnCarregar.Location = new System.Drawing.Point(523, 11);
+            this.btnCarregar.Name = "btnCarregar";
+            this.btnCarregar.Size = new System.Drawing.Size(116, 23);
+            this.btnCarregar.TabIndex = 5;
+            this.btnCarregar.Text = "Carregar Contatos";
+            this.btnCarregar.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -125,16 +152,25 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
-            // dtgContatos
+            // gvContatos
             // 
-            this.dtgContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgContatos.Location = new System.Drawing.Point(6, 40);
-            this.dtgContatos.Name = "dtgContatos";
-            this.dtgContatos.Size = new System.Drawing.Size(633, 322);
-            this.dtgContatos.TabIndex = 0;
+            this.gvContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvContatos.Location = new System.Drawing.Point(6, 40);
+            this.gvContatos.Name = "gvContatos";
+            this.gvContatos.Size = new System.Drawing.Size(633, 322);
+            this.gvContatos.TabIndex = 0;
+            this.gvContatos.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvContatos_CellMouseClick);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtbairro);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.txtNumero);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.txtUf);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.txtCidade);
+            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.btnSalvar);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.mtbDataContato);
@@ -147,7 +183,7 @@
             this.tabPage2.Controls.Add(this.mkbTelefone);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.TxtEndereco);
+            this.tabPage2.Controls.Add(this.TxtRua);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txtEmail);
             this.tabPage2.Controls.Add(this.label2);
@@ -161,9 +197,73 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // txtbairro
+            // 
+            this.txtbairro.Location = new System.Drawing.Point(168, 125);
+            this.txtbairro.Name = "txtbairro";
+            this.txtbairro.Size = new System.Drawing.Size(91, 20);
+            this.txtbairro.TabIndex = 46;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(165, 109);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(34, 13);
+            this.label14.TabIndex = 45;
+            this.label14.Text = "Bairro";
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(266, 125);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(54, 20);
+            this.txtNumero.TabIndex = 44;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(266, 112);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 13);
+            this.label13.TabIndex = 43;
+            this.label13.Text = "Numero";
+            // 
+            // txtUf
+            // 
+            this.txtUf.Location = new System.Drawing.Point(108, 125);
+            this.txtUf.Name = "txtUf";
+            this.txtUf.Size = new System.Drawing.Size(51, 20);
+            this.txtUf.TabIndex = 42;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(111, 109);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 13);
+            this.label11.TabIndex = 41;
+            this.label11.Text = "Uf";
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.Location = new System.Drawing.Point(23, 125);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(82, 20);
+            this.txtCidade.TabIndex = 40;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 109);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(40, 13);
+            this.label12.TabIndex = 39;
+            this.label12.Text = "Cidade";
+            // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(35, 198);
+            this.btnSalvar.Location = new System.Drawing.Point(38, 231);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(99, 33);
             this.btnSalvar.TabIndex = 38;
@@ -174,7 +274,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(214, 116);
+            this.label10.Location = new System.Drawing.Point(220, 150);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 13);
             this.label10.TabIndex = 37;
@@ -182,7 +282,7 @@
             // 
             // mtbDataContato
             // 
-            this.mtbDataContato.Location = new System.Drawing.Point(214, 135);
+            this.mtbDataContato.Location = new System.Drawing.Point(223, 166);
             this.mtbDataContato.Mask = "00/00/0000";
             this.mtbDataContato.Name = "mtbDataContato";
             this.mtbDataContato.Size = new System.Drawing.Size(100, 20);
@@ -191,7 +291,7 @@
             // 
             // txtEmpresa
             // 
-            this.txtEmpresa.Location = new System.Drawing.Point(111, 132);
+            this.txtEmpresa.Location = new System.Drawing.Point(117, 166);
             this.txtEmpresa.Name = "txtEmpresa";
             this.txtEmpresa.Size = new System.Drawing.Size(100, 20);
             this.txtEmpresa.TabIndex = 35;
@@ -199,7 +299,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(108, 116);
+            this.label9.Location = new System.Drawing.Point(114, 150);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 13);
             this.label9.TabIndex = 34;
@@ -208,14 +308,14 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(211, 116);
+            this.label6.Location = new System.Drawing.Point(217, 150);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 33;
             // 
             // txtCargo
             // 
-            this.txtCargo.Location = new System.Drawing.Point(15, 132);
+            this.txtCargo.Location = new System.Drawing.Point(21, 166);
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Size = new System.Drawing.Size(87, 20);
             this.txtCargo.TabIndex = 32;
@@ -223,7 +323,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 116);
+            this.label7.Location = new System.Drawing.Point(21, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 31;
@@ -231,23 +331,23 @@
             // 
             // dtpDtNascimento
             // 
-            this.dtpDtNascimento.Location = new System.Drawing.Point(326, 84);
+            this.dtpDtNascimento.Location = new System.Drawing.Point(108, 83);
             this.dtpDtNascimento.Name = "dtpDtNascimento";
             this.dtpDtNascimento.Size = new System.Drawing.Size(229, 20);
             this.dtpDtNascimento.TabIndex = 30;
             // 
             // mkbTelefone
             // 
-            this.mkbTelefone.Location = new System.Drawing.Point(217, 84);
+            this.mkbTelefone.Location = new System.Drawing.Point(21, 83);
             this.mkbTelefone.Mask = "(00) 0000-0000";
             this.mkbTelefone.Name = "mkbTelefone";
-            this.mkbTelefone.Size = new System.Drawing.Size(100, 20);
+            this.mkbTelefone.Size = new System.Drawing.Size(81, 20);
             this.mkbTelefone.TabIndex = 29;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(214, 68);
+            this.label5.Location = new System.Drawing.Point(18, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 28;
@@ -256,31 +356,31 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(323, 68);
+            this.label4.Location = new System.Drawing.Point(105, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 13);
             this.label4.TabIndex = 27;
             this.label4.Text = "Data de nascimento";
             // 
-            // TxtEndereco
+            // TxtRua
             // 
-            this.TxtEndereco.Location = new System.Drawing.Point(18, 84);
-            this.TxtEndereco.Name = "TxtEndereco";
-            this.TxtEndereco.Size = new System.Drawing.Size(193, 20);
-            this.TxtEndereco.TabIndex = 26;
+            this.TxtRua.Location = new System.Drawing.Point(338, 125);
+            this.TxtRua.Name = "TxtRua";
+            this.TxtRua.Size = new System.Drawing.Size(146, 20);
+            this.TxtRua.TabIndex = 26;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 68);
+            this.label3.Location = new System.Drawing.Point(335, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 25;
-            this.label3.Text = "Endereço";
+            this.label3.Text = "Rua";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(217, 45);
+            this.txtEmail.Location = new System.Drawing.Point(220, 45);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(182, 20);
             this.txtEmail.TabIndex = 24;
@@ -288,7 +388,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(217, 29);
+            this.label2.Location = new System.Drawing.Point(220, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 23;
@@ -296,7 +396,7 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(18, 45);
+            this.txtNome.Location = new System.Drawing.Point(21, 45);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(193, 20);
             this.txtNome.TabIndex = 22;
@@ -304,30 +404,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 29);
+            this.label1.Location = new System.Drawing.Point(18, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 21;
             this.label1.Text = "Nome";
-            // 
-            // btnCarregar
-            // 
-            this.btnCarregar.Location = new System.Drawing.Point(523, 11);
-            this.btnCarregar.Name = "btnCarregar";
-            this.btnCarregar.Size = new System.Drawing.Size(116, 23);
-            this.btnCarregar.TabIndex = 5;
-            this.btnCarregar.Text = "Carregar Contatos";
-            this.btnCarregar.UseVisualStyleBackColor = true;
-            // 
-            // btnRegarregar
-            // 
-            this.btnRegarregar.Location = new System.Drawing.Point(665, 158);
-            this.btnRegarregar.Name = "btnRegarregar";
-            this.btnRegarregar.Size = new System.Drawing.Size(75, 23);
-            this.btnRegarregar.TabIndex = 6;
-            this.btnRegarregar.Text = "Regarregar";
-            this.btnRegarregar.UseVisualStyleBackColor = true;
-            this.btnRegarregar.Click += new System.EventHandler(this.btnRegarregar_Click);
             // 
             // Form2
             // 
@@ -341,7 +422,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgContatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContatos)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -353,7 +434,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dtgContatos;
+        private System.Windows.Forms.DataGridView gvContatos;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnEditarr;
         private System.Windows.Forms.Button btnEditar;
@@ -368,7 +449,7 @@
         private System.Windows.Forms.MaskedTextBox mkbTelefone;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox TxtEndereco;
+        private System.Windows.Forms.TextBox TxtRua;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label2;
@@ -378,5 +459,13 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnCarregar;
         private System.Windows.Forms.Button btnRegarregar;
+        private System.Windows.Forms.TextBox txtUf;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtbairro;
+        private System.Windows.Forms.Label label14;
     }
 }

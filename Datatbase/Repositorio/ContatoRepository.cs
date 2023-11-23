@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Aplicacao.Entidades.Comum;
 using Aplicacao.Repository;
+using Aplicacao.Repository.Entidades.Comum;
 
 namespace Datatbase.Repositorio
 {
     public class ContatoRepository : IContatoRepository
     {
-        public bool Atualizar(Contato produto)
+        public bool Atualizar(Contato contato)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace Datatbase.Repositorio
                     var sql = @"UPDATE [dbo].[Contato]
                                 SET
                                   ,[Nome] = @Nome,
-                                  ,[DataDeNascimento] = @DataDeNascimento
+                                  ,[DataNascimento] = @DataDeNascimento
                                   ,[Endereco] = @Endereco
                                   ,[Email] = @Email
                                   ,[Telefone] = @Telefone
@@ -34,14 +34,17 @@ namespace Datatbase.Repositorio
                     //E passa para o Dapper Substituir no "var sql" os valores @ pelo valor que chegou
                     //no parametro.
                     var parametros = new DynamicParameters();
-                    parametros.Add("@nome", produto.Nome);
-                    parametros.Add("@DataDeNascimento", produto.DataDeNascimento);
-                    parametros.Add("@Endereco", produto.Endereco);
-                    parametros.Add("@Email", produto.Email);
-                    parametros.Add("@Telefone", produto.Telefone);
-                    parametros.Add("@Cargo", produto.Cargo);
-                    parametros.Add("@Empresa", produto.Empresa);
-                    parametros.Add("@DataDoContato", produto.DataDoContato);
+                    parametros.Add("@nome", contato.Nome);
+                    parametros.Add("@dataDeNascimento", contato.DataNascimento);
+                    parametros.Add("@cidade", contato.Cidade);
+                    parametros.Add("@bairro", contato.Bairro);
+                    parametros.Add("@numero",contato.Numero);
+                    parametros.Add("@uf", contato.Uf);
+                    parametros.Add("@email", contato.Email);
+                    parametros.Add("@telefone", contato.Telefone);
+                    parametros.Add("@cargo", contato.Cargo);
+                    parametros.Add("@empresa", contato.Empresa);
+                    parametros.Add("@dataDoContato", contato.DataDoContato);
 
                     var linhasAfetadas = connection.Execute(sql, parametros);
 
@@ -100,6 +103,7 @@ namespace Datatbase.Repositorio
                              @Empresa,
                              @DataDoContato, 
                              @Cargo)";
+
                     var linhasAfetadas = connection.Execute(sql, produto);
 
                     return linhasAfetadas == 1;
@@ -123,9 +127,9 @@ namespace Datatbase.Repositorio
                 {
                     var sql = "SELECT * FROM Contato";
 
-                    var linhasAfetadas = connection.Execute(sql, Contato);
+                    var cargos = connection.Query<Contato>(sql);
 
-                    return linhasAfetadas == 1;
+                    return cargos.ToList();
 
                 }
             }
@@ -181,7 +185,7 @@ namespace Datatbase.Repositorio
             throw new NotImplementedException();
         }
 
-        Contato IContatoRepository.ObterCargo(int id)
+        public object Deletar(int idContato)
         {
             throw new NotImplementedException();
         }

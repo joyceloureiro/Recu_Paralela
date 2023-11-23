@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datatbase.Repositorio;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -14,7 +15,7 @@ namespace Recu_Paralela
         }
         private void CarregarProdutos()
         {
-           _ContatoRepository = new ContatoRepository();
+            _ContatoRepository = new ContatoRepository();
             gvContatos.DataSource = _contatoRepository.ObterTodos();
         }
 
@@ -23,12 +24,10 @@ namespace Recu_Paralela
             CarregarProdutos();
         }
 
-
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             var nome = txtCargo.Text;
-    
+
             Button? button = sender as Button;
 
             var novoContato = new Contato(nome);
@@ -81,36 +80,21 @@ namespace Recu_Paralela
 
         private void gvContatos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-           
-            
-           
-            if (gvContatos.SelectedRows.Count > 0)
+            var contatoRepository = new ContatoRepository();
+            DataGridViewRow row = gvContatos.Rows[e.RowIndex];
+
+            if (gvContatos.Columns[e.ColumnIndex].Name == "Delete")
             {
-                DataGridViewRow row = gvContatos.SelectedRows[0];
-                int idContato = Convert.ToInt32(row.Cells["Id"].Value);
-
-                var resultado = _contatoRepository.
-
+                if (MessageBox.Show("Deseja realmente deletar o registro?",
+                    "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var resulatdo = contatoRepository.Deletar(int.Parse(row.Cells[1].Value.ToString()));
+                    MessageBox.Show("Registro deletado com sucesso!!");
+                };
+                return;
             }
 
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                DataGridViewRow row = dataGridView1.SelectedRows[0];
-                int idContato = Convert.ToInt32(row.Cells["Id"].Value);
 
-                // Sua string de conexão com o banco de dados
-                string connectionString = "Data Source=seu_servidor;Initial Catalog=sua_base_de_dados;Integrated Security=True";
-
-                // Instancie o repositório de contato
-                ContatoRepository contatoRepository = new ContatoRepository(connectionString);
-
-                // Chame o método de exclusão
-                contatoRepository.ExcluirContato(idContato);
-
-                // Remova a linha do DataGridView
-                dataGridView1.Rows.Remove(row);
-                MessageBox.Show("Contato excluído com sucesso!");
-            }
             else
             {
                 MessageBox.Show("Selecione uma linha para excluir.");
