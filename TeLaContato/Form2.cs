@@ -1,4 +1,5 @@
-﻿using Datatbase.Repositorio;
+﻿using Aplicacao.Repository.Entidades.Comum;
+using Datatbase.Repositorio;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,11 +12,11 @@ namespace Recu_Paralela
         public Form2()
         {
             InitializeComponent();
-            _ContatoRepository = new ContatoRepository();
+            
         }
         private void CarregarProdutos()
         {
-            _ContatoRepository = new ContatoRepository();
+            var _contatoRepository = new ContatoRepository();
             gvContatos.DataSource = _contatoRepository.ObterTodos();
         }
 
@@ -26,56 +27,55 @@ namespace Recu_Paralela
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            var nome = txtCargo.Text;
+            string nome = txtNome.Text;
+            string telefone = mkbTelefone.Text;
+            string email = txtEmail.Text;
+            string dataNascimento = dtpDtNascimento.Text;
+            string uf = txtUf.Text;
+            string cidade = txtCidade.Text;
+            string numero = txtNumero.Text;
+            string bairro = txtbairro.Text;
+            string empresa = txtEmpresa.Text;
+            string cargo = txtCargo.Text;
+            string datacontato = mtbDataContato.Text;
+
+            var novoContato = new Contato( nome, telefone, email, dataNascimento, uf, cidade, numero, empresa, bairro, cargo);   
+            var contato = new ContatoRepository();
 
             Button? button = sender as Button;
 
-            var novoContato = new Contato(nome);
-
-            var cargoRepository = new ContatoRepository();
 
             switch (button.Text)
             {
-                case "Cadastrar":
+                case "Atualizar":
                     {
-                        var resultado = ContatoRepository.Inserir(novoContato);
+                        contato.Atualizar(novoContato);
+
+                        var resultado = contato.Atualizar(novoContato);
 
                         if (resultado)
                         {
-                            MessageBox.Show(" Cadastrado com Sucesso.");
+                            MessageBox.Show("Cargo cadastrado com sucesso!!");
                         }
                         else
                         {
-                            MessageBox.Show("Erro! Verifique e Tente Novamente.");
+                            MessageBox.Show("Não foi possivel gravar o cargo!!");
                         }
+                        //cadastar
                         break;
                     }
-                case "Atualizar":
+                case "Salvar":
                     {
-                        var resultado = ContatoRepository.Atualizar(novoContato, id);
-                        if (resultado)
-                        {
-                            MessageBox.Show(" Atualizado com Sucesso.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Erro! Verifique e Tente Novamente.");
-                        }
+                        contato.Incluir(novoContato);
+                        MessageBox.Show("Cargo alterado com sucesso!!");
+                        //cadastar
                         break;
                     }
                 default:
                     break;
             }
-            var resultado = ContatoRepository.Inserir(novoContato);
-
-            if (resultado)
-            {
-                MessageBox.Show("Cadastrado com sucesso");
-            }
-            else
-            {
-                MessageBox.Show("Não foi possivel cadastrar o contato");
-            }
+            
+          
         }
 
         private void gvContatos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -93,7 +93,13 @@ namespace Recu_Paralela
                 };
                 return;
             }
-
+            if (e.RowIndex >= 0)
+            {
+                gvContatos.Show();
+                btnSalvar.Text = "Atualizar";
+                txtCargo.Text = row.Cells[2].Value.ToString();
+                
+            }
 
             else
             {

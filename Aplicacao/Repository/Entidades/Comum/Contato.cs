@@ -24,9 +24,9 @@ namespace Aplicacao.Repository.Entidades.Comum
         public string Cargo { get; set; }
 
 
-        public Contato(int id, string nome, string telefone, string email, string dataNascimento, string uf, string cidade, string numero, string empresa, string bairro, string cargo)
+        public Contato( string nome, string telefone, string email, string dataNascimento, string uf, string cidade, string numero, string empresa, string bairro, string cargo)
         {
-            Id = id;
+            
             Nome = nome;
             Telefone = telefone;
             Email = email;
