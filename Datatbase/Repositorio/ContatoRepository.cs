@@ -17,18 +17,20 @@ namespace Datatbase.Repositorio
             {
                 using (var connection = new SqlConnection(SqlServerConnection.Conexao))
                 {
-                    var sql = @"UPDATE [dbo].[Contato]
-                                SET
-                                  ,[Nome] = @Nome,
-                                  ,[DataNascimento] = @DataDeNascimento
-                                  ,[Endereco] = @Endereco
-                                  ,[Email] = @Email
-                                  ,[Telefone] = @Telefone
-                                  ,[Cargo] = @Cargo
-                                  ,[Empresa] = @Empresa
-                                  ,[DataDoContato] = @DataDoContato
-                                WHERE
-                                    [Id] = @id";
+                    string sql = @"UPDATE Contato
+                                 SET  Nome = @Nome,
+                                      DataNascimento = @DataDeNascimento,
+                                      Cidade = @Cidade,
+                                      Bairro = @Bairro,
+                                      Rua = @Rua,
+                                      Numero = @Numero,
+                                      Email = @Email,
+                                      Telefone = @Telefone,
+                                      Cargo = @Cargo,
+                                      Empresa = @Empresa,
+                                      DataDoContato = @DataDoContato
+                                 WHERE Id = @Id";
+
 
                     //Protege os valores que estão chegando pela Classe Cargo de SqlInjection
                     //E passa para o Dapper Substituir no "var sql" os valores @ pelo valor que chegou
@@ -85,24 +87,11 @@ namespace Datatbase.Repositorio
             {
                 using (var connection = new SqlConnection(SqlServerConnection.Conexao))
                 {
-                    var sql = @"INSERT INTO [dbo].[Contato]
-                            ,[Nome] 
-                            ,[DataDeNascimento] 
-                            ,[Endereco]
-                            ,[Email] 
-                            ,[Telefone] 
-                            ,[Cargo] 
-                            ,[Empresa]
-                            ,[DataDoContato]   
-                         VALUES
-                            (@nome,
-                             @DataDeNascimento,
-                             @Endereco,
-                             @Email,
-                             @Telefone,
-                             @Empresa,
-                             @DataDoContato, 
-                             @Cargo)";
+                    string sql = @"INSERT INTO Contato
+                   (Nome, DataNascimento, Uf, Cidade, Bairro, Rua, Numero, Email, Telefone, Cargo, Empresa, DataDoContato)
+                   VALUES
+                   (@Nome, @DataDeNascimento, @Uf, @Cidade, @Bairro, @Rua, @Numero, @Email, @Telefone, @Cargo, @Empresa, @DataDoContato)";
+
 
                     var linhasAfetadas = connection.Execute(sql, produto);
 
